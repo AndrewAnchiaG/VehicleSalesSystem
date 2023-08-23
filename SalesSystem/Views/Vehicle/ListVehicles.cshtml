@@ -8,67 +8,64 @@
 
 <p>
     <a asp-action="Create">Create New</a>
-
-
-
-
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+               #
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Code)
+                Código
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Model)
+                Modelo
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Mark)
+                Marca
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Year)
+                Año
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Passenger)
+                Color
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tire)
+                Pasajeros
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Engine)
+                Llantas
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fuel)
+                Motor
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tank)
+                Combustible
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Type)
+                Deposito
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Count)
+                Tipo
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                Cantidad
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EntryBy)
+                Precio
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th></th>
+            <th>Opciones</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+
+        @{
+            int line = 0;
+        }
+        @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                @line
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Code)
@@ -81,6 +78,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Passenger)
@@ -107,17 +107,12 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EntryBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    <a asp-controller="Vehicle" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary"><i class="fa-solid fa-car-burst"></i></a>
+                    <a asp-controller="Vehicle" asp-action="Details" asp-route-id="@item.Id" class="btn btn-success"><i class="fa-solid fa-car-side"></i></a>
+                    <a asp-controller="Vehicle" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="fa-solid fa-delete-left"></i></a>
             </td>
         </tr>
+        line++;
 }
     </tbody>
 </table>

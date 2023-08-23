@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
+using SalesSystem.Models;
+using SalesSystem.Utilities;
 
 namespace SalesSystem.Controllers
 {
@@ -11,9 +14,10 @@ namespace SalesSystem.Controllers
             return View();
         }
 
-        public ActionResult Vehicles()
+        public ActionResult ListVehicles()
         {
-            return View();
+            List<Vehicle> vehicles = new ServiceVehicle().SelectAllActiveVehicles();
+            return View(vehicles);
         }
 
         // GET: VehicleController/Details/5
@@ -25,27 +29,32 @@ namespace SalesSystem.Controllers
         // GET: VehicleController/Create
         public ActionResult Create()
         {
+
             return View();
+
         }
 
         // POST: VehicleController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Vehicle vehicle)
         {
-            try
+            vehicle.Entry = DateAndTime.Now;
+            vehicle.Status = 1;
+            bool respuesta = new ServiceVehicle().InsertVehicle(vehicle);
+            if (respuesta)
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("ListVehicles");
             }
-            catch
+            else
             {
-                return View();
+                return RedirectToAction("Error", "Home");
             }
         }
 
         // GET: VehicleController/Edit/5
         public ActionResult Edit(int id)
-        {
+        { 
             return View();
         }
 

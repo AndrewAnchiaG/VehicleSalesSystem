@@ -23,6 +23,9 @@ namespace SalesSystem.Utilities
         public int? Year { get; set; }
 
         [Required]
+        public string? Color { get; set; }
+
+        [Required]
         public int? Passenger { get; set; }
 
         [Required]
@@ -47,7 +50,7 @@ namespace SalesSystem.Utilities
         public double? Price { get; set; }
 
         [Required]
-        public DateAndTime? Entry { get; set; }
+        public DateTime? Entry { get; set; }
 
         [Required]
         public int? EntryBy { get; set; }

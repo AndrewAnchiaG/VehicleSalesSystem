@@ -1,14 +1,17 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SalesSystem.Models;
+using SalesSystem.Utilities;
 
 namespace SalesSystem.Controllers
 {
     public class ClientController : Controller
     {
         // GET: ClientController
-        public ActionResult Index()
+        public ActionResult ListClient()
         {
-            return View();
+            List<Client> listclient = new ServiceClient().GetAllActiveUsers();
+            return View(listclient);
         }
 
 
@@ -63,7 +66,15 @@ namespace SalesSystem.Controllers
         // GET: ClientController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            bool result = new ServiceClient().DeleteClient(id);
+            if (result)
+            {
+                return RedirectToAction("ListClient", "Client");
+            }
+            else
+            {
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // POST: ClientController/Delete/5

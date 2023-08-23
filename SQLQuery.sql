@@ -85,6 +85,8 @@ IF NOT EXISTS (SELECT name FROM sys.filegroups WHERE is_default=1 AND name = N'P
 GO
 
 
+USE [VehicleAgency]
+GO
 CREATE TABLE Client (
 	Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	Code INT NOT NULL,    
@@ -100,13 +102,14 @@ CREATE TABLE Client (
 	Status INT NOT NULL DEFAULT 1
 );
 
-
+GO
 CREATE TABLE Vehicle (
 	Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	Code INT NOT NULL,
 	Model VARCHAR(20) NOT NULL,
 	Mark VARCHAR(20) NOT NULL,
 	Year INT NOT NULL,
+	Color VARCHAR(25) NOT NULL,
 	Passenger INT NOT NULL,
 	Tire VARCHAR(12),
 	Engine VARCHAR(50),
@@ -119,8 +122,8 @@ CREATE TABLE Vehicle (
 	EntryBy INT NOT NULL,
 	Status INT NOT NULL DEFAULT 1
 	);
-
-
+	
+GO
 CREATE TABLE Bill(
 	Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	Consecutive INT NOT NULL,
@@ -137,90 +140,111 @@ CREATE TABLE Bill(
 	CONSTRAINT FK_Bill_Client FOREIGN KEY(Id) REFERENCES Client (Id),
 	CONSTRAINT fk_Bill_Vehicle FOREIGN KEY(Id) REFERENCES Vehicle(Id)
 );
-
-
-
+GO
 CREATE TABLE ListVehicle(
 	IdBill INT NOT NULL,
 	IdVehicle INT NOT NULL, 
 	Status INT NOT NULL DEFAULT 1
 );
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	}
 
+GO
+INSERT INTO [dbo].[Vehicle]
+           ([Code],[Model],[Mark],[Year], [Color],[Passenger],[Tire],[Engine],[Fuel],[Tank],[Type],[Count],[Price],[Entry],[EntryBy],[Status])
+     VALUES
+		(1030,'HILUX SRV','TOYOTA',2024, 'Rojo',5,'265/70R17','2.8L 4CYL 16V DOHC D-4D 201HP@3400RPM', 'DIESEL' ,80 ,5 ,12 ,63900,'2023-08-22 11:30:00',1 ,1),
+		(1031,'RAV4','TOYOTA',2024,'Negro',5,'225/65R17','2.0L 4CYL 16V DUAL VVT-iE 170HP 6600RPM','GASOLINA' ,55,1,6,34100,'2023-08-23 1:30:00',3,1),
+		(1020,'FRONTIER NP300','NISSAN',2024,'Naranja Imperial',5 ,'265/70R18','2.5L PRO-X 4X4 188HP@3600RPM', 'DIESEL',60,5,8,63900,'2023-08-23 11:30:00',3,1)
+GO
 
-	public List<Vehicle>? Vehicles { get; set; }
+INSERT INTO [dbo].[Client] 
+		([Code],[DNI] ,[Name]  ,[FirstName] ,[LastName],[Email],[Birth] ,[Mobile],[Phone],[RegisterDate],[Status])
+     VALUES
+        (1075,'207820248','Andrew O.','Anchía','González','andrewoag98@gmail.com','1998-07-30 9:45:10','+506 8575 8771','+506 8575 8771','2023-07-30 9:45:10',1),
+        (1076,'402740569','Karen C.','Lopez','Caraz','karenlc@gmail.com','1980-04-25 5:20:00','+506 6563 8546','+506 8426 6522','2023-08-23 9:45:10',1);
+GO
+	
+-----------------------------------------------------------------------------------------------------------------	 
+CREATE PROCEDURE SelectAllActiveClient
+AS
+SELECT [Id],[Code],[DNI],[Name],[FirstName],[LastName] ,[Email],[Birth],[Mobile],[Phone],[RegisterDate],[Status]
+  FROM [dbo].[Client] WHERE Status = 1;
+GO
+-----------------------------------------------------------------------------------------------------------------
+CREATE PROCEDURE DeleteClient
+@Id INT
+AS 
+UPDATE [dbo].[Client]
+   SET [Status] = 0 
+ WHERE Id = @Id;
+GO
+-----------------------------------------------------------------------------------------------------------------
+CREATE PROCEDURE UpdateClient
+	@Id INT,@Code INT, @DNI  VARCHAR(15), @Name VARCHAR(25), @FirstName VARCHAR(25), @LastName VARCHAR(25),
+   @Email VARCHAR(40), @Birth datetime, @Mobile VARCHAR(15),  @Phone VARCHAR(15), @Status INT
+AS
+UPDATE [dbo].[Client]
+   SET [Code] = @Code ,[DNI] = @DNI ,[Name] = @Name ,[FirstName] = @FirstName ,[LastName] = @LastName
+      ,[Email] = @Email ,[Birth] = @Birth ,[Mobile] = @Mobile ,[Phone] = @Phone ,[Status] = @Status
+ WHERE Id = @Id;
+ GO
+-----------------------------------------------------------------------------------------------------------------
+CREATE PROCEDURE InsertClient
+	@Code INT,@DNI VARCHAR(15),@Name VARCHAR(25),@FirstName VARCHAR(25)
+	,@LastName VARCHAR(25),@Email VARCHAR(40),@Birth DATETIME,@Mobile VARCHAR(15)
+	,@Phone VARCHAR(15),@RegisterDate DATETIME,@Status INT
+AS
+INSERT INTO [dbo].[Client]
+		([Code],[DNI] ,[Name] ,[FirstName] ,[LastName] ,[Email] ,[Birth] ,[Mobile] ,[Phone] ,[RegisterDate],[Status])
+    VALUES(
+		@Code,@DNI,@Name ,@FirstName ,@LastName ,@Email ,@Birth ,@Mobile ,@Phone,@RegisterDate,@Status)
+GO
+-----------------------------------------------------------------------------------------------------------------
+CREATE PROCEDURE InsertVehicle
+@Code INT, @Model VARCHAR(20), @Mark VARCHAR(20) ,@Year INT, @Color VARCHAR(25), @Passenger INT, @Tire VARCHAR(12), @Engine VARCHAR(50),
+@Fuel VARCHAR(12), @Tank INT, @Type INT, @Count INT, @Price FLOAT ,@Entry DATETIME,@EntryBy INT ,@Status INT
+AS
+INSERT INTO [dbo].[Vehicle]
+            ([Code],[Model] ,[Mark] ,[Year] ,[Color] ,[Passenger] ,[Tire] ,[Engine],[Fuel] ,[Tank],[Type],[Count],[Price],[Entry],[EntryBy],[Status])
+     VALUES(
+		 @Code, @Model, @Mark, @Year, @Color, @Passenger ,@Tire, @Engine ,@Fuel ,@Tank ,@Type ,@Count ,@Price,@Entry,@EntryBy, @Status);
+GO
+-----------------------------------------------------------------------------------------------------------------
+CREATE PROCEDURE SearchVehicleBySalesPerson
+@SalesPerson INT 
+AS	
+SELECT [Id] ,[Code],[Model],[Mark],[Year],[Color],[Passenger],[Tire],[Engine],[Fuel],[Tank],[Type],[Count],[Price],[Entry],[EntryBy],[Status]
+  FROM [dbo].[Vehicle]
+  WHERE Entry = @SalesPerson;
+GO
+-----------------------------------------------------------------------------------------------------------------
+CREATE PROCEDURE SearchVehicleByDateEntry
+@DateEntry DATETIME 
+AS	
+SELECT [Id] ,[Code],[Model],[Mark],[Year],[Color],[Passenger],[Tire],[Engine],[Fuel],[Tank],[Type],[Count],[Price],[Entry],[EntryBy],[Status]
+  FROM [dbo].[Vehicle]
+  WHERE EntryBy = @DateEntry;
+GO
+-----------------------------------------------------------------------------------------------------------------
+CREATE PROCEDURE SelectAllActiveVehicle
+AS	
+SELECT [Id]
+      ,[Code]
+      ,[Model]
+      ,[Mark]
+      ,[Year]
+      ,[Color]
+      ,[Passenger]
+      ,[Tire]
+      ,[Engine]
+      ,[Fuel]
+      ,[Tank]
+      ,[Type]
+      ,[Count]
+      ,[Price]
+      ,[Entry]
+      ,[EntryBy]
+      ,[Status]
+  FROM [dbo].[Vehicle]
+  WHERE Status = 1;
+GO
+GO

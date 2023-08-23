@@ -6,7 +6,7 @@ namespace SalesSystem.Controllers
     public class SalesController : Controller
     {
         // GET: SalesController
-        public ActionResult Index()
+        public ActionResult List()
         {
             return View();
         }

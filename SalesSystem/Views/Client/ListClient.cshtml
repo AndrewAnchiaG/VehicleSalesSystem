@@ -1,61 +1,60 @@
 ﻿@model IEnumerable<SalesSystem.Utilities.Client>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Clientes";
 }
 
-<h1>Index</h1>
+<h1>Clientes</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-controller="ClientController" asp-action="Create" class="btn effect01 m-2"><i class="fa-solid fa-user-plus"></i> Nuevo Cliente</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                #
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Code)
+                Código
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DNI)
+                DNI
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Nombre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                I Apellido
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                II Apellido
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                Correo
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Birth)
+                Nacimiento
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Mobile)
+                Celular
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Phone)
+                Teléfono
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RegisterDate)
+                Opciones
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @{
+           int line = 1; 
+        }
+        @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                @line
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Code)
@@ -85,17 +84,12 @@
                 @Html.DisplayFor(modelItem => item.Phone)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RegisterDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <a asp-controller="ClientController" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary"><i class="fa-solid fa-user-pen"></i></a>
+                <a asp-controller="ClientController" asp-action="Details" asp-route-id="@item.Id" class="btn btn-success"><i class="fa-solid fa-address-card"></i></a>
+                <a asp-controller="ClientController" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="fa-solid fa-user-xmark"></i></a>
             </td>
         </tr>
+            line++;
 }
     </tbody>
 </table>

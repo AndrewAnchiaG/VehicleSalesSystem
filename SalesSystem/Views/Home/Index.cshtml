@@ -8,11 +8,15 @@
     <h1 class="display-4">Inicio</h1>
 
     <a asp-controller="Client" asp-action="Create" class="btn effect01 m-2"><i class="fa-solid fa-user-plus"></i> Nuevo Cliente</a>
+    <a asp-controller="Client" asp-action="ListClient" class="btn effect01 m-2"><i class="fa-solid fa-people-line"></i> Clientes</a>
+
     <a asp-controller="Vehicle" asp-action="Create" class="btn effect01 m-2"><i class="fa-solid fa-car-rear"></i> Nuevo Veh&iacute;culo</a>
-    <a asp-controller="Sales" asp-action="Create" class="btn effect01 m-2"><i class="fa-solid fa-truck-pickup"></i> Facturaci&oacute;n</a>
-    <a asp-controller="Sales" asp-action="List" class="btn effect01 m-2"><i class="fa-solid fa-clipboard-list"></i> Inventario</a>
+    <a asp-controller="Vehicle" asp-action="ListVehicles" class="btn effect01 m-2"><i class="fa-regular fa-rectangle-list"></i> Veh&iacute;culos</a>
+
+    <a asp-controller="Sales" asp-action="Create" class="btn effect01 m-2"><i class="fa-solid fa-truck-pickup"></i> Facturar</a>
+    <a asp-controller="Sales" asp-action="List" class="btn effect01 m-2"><i class="fa-solid fa-clipboard-list"></i> Facturas</a>
 
 
     
-    <p>Venta de Vehiculos</p>
+    <p>Sistema de Venta para Vehículos</p>
 </div>

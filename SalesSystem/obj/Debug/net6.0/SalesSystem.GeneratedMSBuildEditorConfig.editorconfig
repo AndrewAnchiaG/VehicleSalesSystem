@@ -24,8 +24,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/Downloads/VehicleSalesSystem/SalesSystem/Views/Client/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XEluZGV4LmNzaHRtbA==
+[C:/Users/andre/Downloads/VehicleSalesSystem/SalesSystem/Views/Client/ListClient.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XExpc3RDbGllbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/andre/Downloads/VehicleSalesSystem/SalesSystem/Views/Home/Index.cshtml]
@@ -52,8 +52,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWNsZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/andre/Downloads/VehicleSalesSystem/SalesSystem/Views/Vehicle/Vehicles.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWNsZVxWZWhpY2xlcy5jc2h0bWw=
+[C:/Users/andre/Downloads/VehicleSalesSystem/SalesSystem/Views/Vehicle/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWNsZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/andre/Downloads/VehicleSalesSystem/SalesSystem/Views/Vehicle/ListVehicles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVoaWNsZVxMaXN0VmVoaWNsZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/andre/Downloads/VehicleSalesSystem/SalesSystem/Views/_ViewImports.cshtml]
