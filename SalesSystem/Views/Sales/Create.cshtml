@@ -1,0 +1,107 @@
+﻿@model SalesSystem.Utilities.Bill
+
+@{
+    ViewData["Title"] = "Facturar";
+}
+
+<h1>Facturací&oacute;n</h1>
+
+<h4>Factura</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Id" value="0" class="form-control" hidden />
+            </div>
+            <div class="form-group">
+                <label asp-for="Consecutive" class="control-label">Consecutivo</label>
+                <input asp-for="Consecutive" class="form-control" value="000000000000000"/>
+                <span asp-validation-for="Consecutive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumericalKey" class="control-label">Clave Num&eacute;rica</label>
+                <input asp-for="NumericalKey" class="form-control" value="0000000000"/>
+                <span asp-validation-for="NumericalKey" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InternalCode" class="control-label">N&uacute;mero</label>
+                <input asp-for="InternalCode" class="form-control"/>
+                <span asp-validation-for="InternalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SalesPerson" class="control-label">Vendedor</label>
+                <select name="SalesPerson" asp-for="SalesPerson" class="form-control">
+                    <option value="1">Karla Espinoza</option>
+                    <option value="2">Andrey Arguedas</option>
+                    <option value="3">Mario Mora</option>
+                    <option value="4">Gabriela Perez</option>
+                </select>
+                <span asp-validation-for="SalesPerson" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Client" class="control-label">Cliente</label>
+                <input asp-for="Client" class="form-control" placeholder="Cliente" />
+                <input type="text" class="form-control" placeholder="Nombre"/>
+                <span asp-validation-for="Client" class="text-danger"></span>
+            </div>
+
+
+            <table class="table table-responsive table-hover table-secondary">
+                <thead>
+                <tr>
+                    <td>#</td>
+                    <td>C&oacute;digo</td>
+                    <td>Modelo</td>
+                    <td>Marca</td>
+                    <td>Precio</td>
+                    <td>IVA</td>
+                    <td>Total</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1027</td>
+                    <td>Frontier</td>
+                    <td>Nissan</td>
+                    <td>37 600</td>
+                    <td>4888</td>
+                    <td>42488</td>
+                    <td><a class="btn btn-danger"><i class="fa-solid fa-circle-minus"></i></a></td>
+                </tr>
+            </tbody>
+            </table>
+
+
+            <div class="form-group">
+                <label asp-for="Price" class="control-label">Precio</label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IVA" class="control-label"></label>
+                <input asp-for="IVA" class="form-control" />
+                <span asp-validation-for="IVA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Total" class="control-label"></label>
+                <input asp-for="Total" class="form-control" />
+                <span asp-validation-for="Total" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

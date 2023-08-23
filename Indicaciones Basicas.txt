@@ -1,0 +1,26 @@
+ 
+Servidor: localserver
+
+Base de datos: VehicleAgency
+
+Usuario: SuUsuarioPropio
+
+Contraseña: SuContraseñaSQLSERVE																																								
+
+En el archivo appsettings.json debe editar la cadena de conexion y colocar su servidor, 
+crear la base de datos con el script, colocar su usuario y su contraseñs para el inicio de sesión.  
+
+
+Repocitorio del proyecto: https://github.com/AndrewAnchiaG/VehicleSalesSystem.git
+
+
+Portafolio Personal: https://andrewanchiag.github.io/Portafolio/
+
+
+
+
+  Nota: Una discupa que apenas haya empezado el projecto, pero es que tengo a mi padre enfemer y 
+tuve que llevarle al hospital y hasta ahorita llegue del hospital, por eso no puede ni enviarlo a la hora que debia,
+segu yo llebaba a mi papá al hospital y despues venía, a terminar, pero no se pudo, solo lo que 
+hice antes en la mañana como en 3 horas que tuve antes de salir con mi padres que tiene calculos renales,
+y estos le provoca orinar sangre, o la uretra se tapa y de esa forma se generan crisis de dolor muy graves.

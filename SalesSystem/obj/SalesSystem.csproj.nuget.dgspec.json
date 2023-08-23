@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\andre\\Downloads\\VehicleSalesSystem\\SalesSystem\\SalesSystem\\SalesSystem.csproj": {}
+    "C:\\Users\\andre\\Downloads\\VehicleSalesSystem\\SalesSystem\\SalesSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\andre\\Downloads\\VehicleSalesSystem\\SalesSystem\\SalesSystem\\SalesSystem.csproj": {
+    "C:\\Users\\andre\\Downloads\\VehicleSalesSystem\\SalesSystem\\SalesSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andre\\Downloads\\VehicleSalesSystem\\SalesSystem\\SalesSystem\\SalesSystem.csproj",
+        "projectUniqueName": "C:\\Users\\andre\\Downloads\\VehicleSalesSystem\\SalesSystem\\SalesSystem.csproj",
         "projectName": "SalesSystem",
-        "projectPath": "C:\\Users\\andre\\Downloads\\VehicleSalesSystem\\SalesSystem\\SalesSystem\\SalesSystem.csproj",
+        "projectPath": "C:\\Users\\andre\\Downloads\\VehicleSalesSystem\\SalesSystem\\SalesSystem.csproj",
         "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andre\\Downloads\\VehicleSalesSystem\\SalesSystem\\SalesSystem\\obj\\",
+        "outputPath": "C:\\Users\\andre\\Downloads\\VehicleSalesSystem\\SalesSystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,20 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
+            "bootstrap": {
+              "target": "Package",
+              "version": "[5.3.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
